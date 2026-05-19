@@ -80,6 +80,24 @@ It solves a real problem: wasted farm time, failed renders, slow reviews, broken
 
 ---
 
+## Financial and Resource Value
+
+VFX render farms are expensive. The financial case for this tool is direct:
+
+- A failed job that rerenders pays 100% of its compute cost twice
+- A job running 2× longer than necessary wastes double the farm slot time and cloud budget
+- A straggler worker on a 20-node distributed job holds all other nodes idle
+- IO-bottlenecked nodes occupy farm slots while CPU and GPU sit idle
+- Cloud burst jobs misconfigured at submission run up per-hour charges with no added output
+
+**Pre-submit prediction has the highest ROI.** Catching a risky job before it runs recovers 100% of the wasted compute. Post-render diagnosis still has value — it prevents the same waste on the next similar job — but pre-submit is where the largest savings live.
+
+At scale across a production pipeline, recovering even 10–15% of wasted farm time is equivalent to adding physical render nodes without purchasing new hardware.
+
+See [COST_AND_RESOURCE_IMPACT.md](COST_AND_RESOURCE_IMPACT.md) for the full financial breakdown.
+
+---
+
 ## Core research questions
 
 1. Can we predict if a render will be slow before it starts?

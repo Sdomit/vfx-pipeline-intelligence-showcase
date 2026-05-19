@@ -187,6 +187,35 @@ See [docs/DATA_MODEL.md](docs/DATA_MODEL.md) for full schemas.
 
 ---
 
+## Cost and Resource Impact
+
+Render farms are among the most expensive infrastructure in VFX production. Unoptimized jobs do not just slow pipelines — they burn real money.
+
+| Problem | Financial cost |
+|---|---|
+| Job fails and rerenders | 100% of compute cost paid twice |
+| Job runs 2x longer than necessary | Double the farm slot time, double cloud cost |
+| Straggler worker on 20-node job | 19 nodes sit idle waiting — full farm cost, partial output speed |
+| IO bottleneck blocking render nodes | Nodes occupied, CPU/GPU idle, farm slots wasted |
+| Cloud burst job misconfigured | $60–$240/hour per burst group, multiplied by extra hours |
+
+**What pre-submit prediction recovers:**
+
+If a job would fail or run 3× longer and the system catches it before submission, 100% of that wasted compute is recovered. No rerenders. No blocked farm slots. No emergency debugging at deadline.
+
+```
+Example optimization recovery:
+100 frames × 10 workers × 8 sec saved per frame
+= 8,000 seconds = ~2.2 hours of compute recovered
+from a single job
+```
+
+At scale — across dozens of jobs per day — optimized throughput is equivalent to adding physical render capacity without purchasing new hardware.
+
+See [docs/COST_AND_RESOURCE_IMPACT.md](docs/COST_AND_RESOURCE_IMPACT.md) for the full financial breakdown.
+
+---
+
 ## Long-Term Vision
 
 This project is the foundation for a larger idea: an AI-powered intelligence layer that eventually lives inside the render engine itself.
@@ -311,6 +340,7 @@ The full lab repository with detailed research docs, schemas, and cause cards li
 | [Cause Library](docs/CAUSE_LIBRARY.md) | Issue patterns and cause card definitions |
 | [Privacy and Ethics](docs/PRIVACY_AND_ETHICS.md) | Data handling and ethical guidelines |
 | [Vision](docs/VISION.md) | Long-term direction — from log analysis to AI inside the render engine |
+| [Cost and Resource Impact](docs/COST_AND_RESOURCE_IMPACT.md) | Financial case, compute recovery, and resource efficiency |
 | [Diagrams](docs/assets/DIAGRAMS.md) | Mermaid architecture and flow diagrams |
 
 ---

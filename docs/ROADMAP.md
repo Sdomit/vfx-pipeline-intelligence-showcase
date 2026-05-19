@@ -143,6 +143,11 @@ Build a dashboard showing:
 - Slowest frames and first-frame penalty
 - Straggler ratio for distributed jobs
 - Optimization suggestions
+- **Estimated compute time saved** per flagged and optimized job
+- **Wasted render time recovered** — total hours and equivalent node count
+- **Cost impact summary** — illustrative savings based on farm size and job mix
+
+The cost and resource view is a first-class dashboard feature, not an afterthought. Pipeline supervisors and production managers need to see the financial case clearly.
 
 **Stack:** Streamlit first, then Dash or React + FastAPI.
 
