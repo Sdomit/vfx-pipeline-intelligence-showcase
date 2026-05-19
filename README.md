@@ -187,6 +187,26 @@ See [docs/DATA_MODEL.md](docs/DATA_MODEL.md) for full schemas.
 
 ---
 
+## Long-Term Vision
+
+This project is the foundation for a larger idea: an AI-powered intelligence layer that eventually lives inside the render engine itself.
+
+**Three layers of the future system:**
+
+| Layer | Name | Timing | What It Does |
+|---|---|---|---|
+| 1 | Log-based analysis | **Now — this project** | Parse logs, detect risk patterns, diagnose issues |
+| 2 | Pre-submit scene inspector | Near-term | Inspect the actual DCC scene before farm submission via Python APIs |
+| 3 | AI inside the render engine | Long-term | Real-time warnings inside Arnold, Karma, RenderMan, Redshift as the artist works |
+
+Layer 3 is where the system warns about material complexity, texture resolution, sample count, UDIM count, and render settings — in real time, before a single frame is submitted.
+
+That AI advisor cannot exist without labeled data. This project builds that data.
+
+See [docs/VISION.md](docs/VISION.md) for the full three-layer breakdown, example outputs, and industry context.
+
+---
+
 ## Current Status
 
 | Phase | Description | Status |
@@ -290,6 +310,7 @@ The full lab repository with detailed research docs, schemas, and cause cards li
 | [Data Model](docs/DATA_MODEL.md) | All planned CSV tables and schemas |
 | [Cause Library](docs/CAUSE_LIBRARY.md) | Issue patterns and cause card definitions |
 | [Privacy and Ethics](docs/PRIVACY_AND_ETHICS.md) | Data handling and ethical guidelines |
+| [Vision](docs/VISION.md) | Long-term direction — from log analysis to AI inside the render engine |
 | [Diagrams](docs/assets/DIAGRAMS.md) | Mermaid architecture and flow diagrams |
 
 ---
